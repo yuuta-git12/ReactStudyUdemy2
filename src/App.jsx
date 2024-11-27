@@ -2,10 +2,16 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import { ChildArea } from "./ChildArea"
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [text, setText] = useState("");
+  const [open ,setOpen] = useState(false);
 
+  const onChangeText = (e) => setText(e.target.value);
+
+  const onClickOpen = () => setOpen(!open);
+  
   const onClickCountUp = () => {
     setCount(count + 1);
   };
@@ -13,10 +19,11 @@ function App() {
   return (
     <>
       <div className="App"></div>
-      <input />
+      <input value={text} onChange={onChangeText}/>
       <br />
       <br />
-      <button>表示</button>
+      <button onClick={onClickOpen}>表示</button>
+      <ChildArea open={open}/>
     </>
   );
 }
