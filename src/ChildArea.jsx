@@ -10,7 +10,7 @@ const style = {
 // memoでコンポーネントを囲むことでpropsの更新以外で
 // 子コンポーネントの再レンダリングされることを防ぐことができる
 export const ChildArea = memo((props) => {
-  const {open} = props;
+  const {open, onClickClose } = props;
 
   console.log("ChildAreaがレンダリングされた")
 
@@ -25,6 +25,7 @@ export const ChildArea = memo((props) => {
       {open ? (
         <div style={style}>
           <p>子コンポーネント</p>
+          <button onClick={onClickClose}>閉じる</button>
         </div>
       ) : null }
     </>    
