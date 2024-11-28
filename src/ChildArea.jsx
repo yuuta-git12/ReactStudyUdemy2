@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const style = {
   width: "100%",
   height: "200px",
@@ -5,8 +7,19 @@ const style = {
   color:"black"
 }
 
-export const ChildArea = (props) => {
+// memoでコンポーネントを囲むことでpropsの更新以外で
+// 子コンポーネントの再レンダリングされることを防ぐことができる
+export const ChildArea = memo((props) => {
   const {open} = props;
+
+  console.log("ChildAreaがレンダリングされた")
+
+  // 2000件のデータをコンソールに表示する処理
+  const data = [...Array(2000).keys()];
+  data.forEach(() => {
+    console.log("...")
+  })
+
   return (
     <>
       {open ? (
@@ -16,4 +29,4 @@ export const ChildArea = (props) => {
       ) : null }
     </>    
   );
-};
+});
