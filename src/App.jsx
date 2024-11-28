@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
@@ -18,6 +18,10 @@ function App() {
 
   // useCallbackによる再レンダリング（関数のmemo化)　第２引数は見張る値
   const onClickClose = useCallback(() => setOpen(false),[setOpen])
+
+  // useMemoを使うことで変数をmemo化できる
+  const temp = useMemo(() => 1 + 3,[]);
+  console.log(temp);
 
   return (
     <>
